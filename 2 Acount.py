@@ -24,7 +24,7 @@ headers_2 = {
 
 # Start awal
 print("Script by rill_hv")
-print("Discord server: ")
+print("Discord server: https://discord.gg/MeHNCayCmu")
 
 def send_report_to_webhook(webhook_url, message):
     # Mendapatkan timestamp saat ini
