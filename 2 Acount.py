@@ -81,15 +81,15 @@ def send_message_with_delay(url, payload, headers, delay, webhook_url):
 # Fungsi untuk mengirim pesan dari dua author secara bersamaan
 def send_messages():
     # Mengonversi jam dan menit ke detik, kemudian menjumlahkan dengan detik
-    delay_primary_seconds = (delay_bot_primary_jam * 3600) + (delay_bot_primary_menit * 60) + delay_bot_primary_detik
-    delay_bot_others_seconds = (delay_bot_others_jam * 3600) + (delay_bot_others_menit * 60) + delay_bot_others_detik
+    delay_msg_seconds = (delay_bot_msg_jam * 3600) + (delay_bot_msg_menit * 60) + delay_bot_msg_detik
 
     # Membuat dua thread untuk mengirim pesan secara bersamaan
-    thread_1 = threading.Thread(target=send_message_with_delay, args=(url_1, payload_1, headers_1, delay_primary_seconds, webhook_url))
-    thread_2 = threading.Thread(target=send_message_with_delay, args=(url_1, payload_2, headers_2, delay_bot_others_seconds, webhook_url))
+    thread_1 = threading.Thread(target=send_message_with_delay, args=(url_1, payload_1, headers_1, delay_msg_seconds, webhook_url))
+    thread_2 = threading.Thread(target=send_message_with_delay, args=(url_1, payload_2, headers_2, delay_msg_seconds, webhook_url))
 
     # Memulai kedua thread
     thread_1.start()
+    time.sleep(delay_msg_seconds)  
     thread_2.start()
 
     # Menunggu kedua thread selesai
