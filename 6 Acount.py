@@ -49,6 +49,7 @@ headers_6 = {
 # Start awal
 print("Script by rill_hv")
 print("Discord server: https://discord.gg/MeHNCayCmu")
+print(f"Tittle :  {Tittle}")
 
 def send_report_to_webhook(webhook_url, message):
     # Mendapatkan timestamp saat ini
@@ -59,7 +60,7 @@ def send_report_to_webhook(webhook_url, message):
         "embeds": [
             {
                 "title": "Script By rill_hv",  # Judul embed
-                "description": f"<:chat1:1080231176658243674>**|Pesan: {message}**\n<a:ceklis:940153225166856233>**|Status: Terkirim**",  # Deskripsi embed
+                "description": f"**Tittle: {Tittle}**\n<:chat1:1080231176658243674>**|Pesan: {message}**\n<a:ceklis:940153225166856233>**|Status: Terkirim**",  # Deskripsi embed
                 "color": 0x03b2f8,  # Warna embed biru
                 "author": {
                     "name": "[Sytem] AUTO SEND LOGS",  # Nama penulis embed
