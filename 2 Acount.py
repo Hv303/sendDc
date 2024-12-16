@@ -25,17 +25,18 @@ headers_2 = {
 # Start awal
 print("Script by rill_hv")
 print("Discord server: https://discord.gg/MeHNCayCmu")
+print(f"Tittle :  {Tittle}")
 
 def send_report_to_webhook(webhook_url, message):
     # Mendapatkan timestamp saat ini
     timestamp = datetime.now().strftime('%Y-%m-%dT%H:%M:%S.%fZ')
     
-    # Menyiapkan embed untuk webhook
+     # Menyiapkan embed untuk webhook
     embed = {
         "embeds": [
             {
                 "title": "Script By rill_hv",  # Judul embed
-                "description": f"<:chat1:1080231176658243674>**|Pesan: {message}**\n<a:ceklis:940153225166856233>**|Status: Terkirim**",  # Deskripsi embed
+                "description": f"**Tittle: {Tittle}**\n<:chat1:1080231176658243674>**|Pesan: {message}**\n<a:ceklis:940153225166856233>**|Status: Terkirim**",  # Deskripsi embed
                 "color": 0x03b2f8,  # Warna embed biru
                 "author": {
                     "name": "[Sytem] AUTO SEND LOGS",  # Nama penulis embed
@@ -57,7 +58,7 @@ def send_report_to_webhook(webhook_url, message):
     res = requests.post(webhook_url, json=embed)
 
     if res.status_code == 204:
-        pass
+      pass
     else:
         print(f"Gagal mengirim pesan. Kode status: {res.status_code}")
 
