@@ -1,3 +1,7 @@
+import socket
+import time
+import threading
+from datetime import datetime
 # Start awal print
 print("Script by rill_hv")
 print("Discord server: https://discord.gg/MeHNCayCmu")
