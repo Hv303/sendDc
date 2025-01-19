@@ -141,3 +141,4 @@ def send_messages():
 # Loop utama untuk terus mengirim pesan
 while True:
     send_messages()
+    
