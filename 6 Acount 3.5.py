@@ -1,8 +1,7 @@
-# Start awal print
 print("Script by rill_hv")
 print("Discord server: https://discord.gg/MeHNCayCmu")
 
-#Autor
+# Autor keys
 key_bot_1 = key_1
 key_bot_2 = key_2
 key_bot_3 = key_3
@@ -11,9 +10,8 @@ key_bot_5 = key_5
 key_bot_6 = key_6
 
 # Socket setup for connection
-HOST = hostServer 
-PORT = int(portServer) 
-
+HOST = hostServer
+PORT = int(portServer)
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Function send messages to Discord via webhook
@@ -44,8 +42,8 @@ def send_report_to_webhook(webhook_url, message):
     res = requests.post(webhook_url, json=embed)
     if res.status_code == 204:
         pass
-    else:
-        print(f"Gagal mengirim pesan. Kode status: {res.status_code}")
+    elif res.status_code != 429:
+        print(f"Gagal mengirim pesan. Kode status: {res.status_code}")  # Tidak mencetak 429
 
 # Function send message with delay
 def send_message_with_delay(url, payload, headers, delay, webhook_url):
@@ -56,6 +54,9 @@ def send_message_with_delay(url, payload, headers, delay, webhook_url):
         message = f"Pesan berhasil dikirim: {payload['content']}"
     elif res.status_code == 204:
         message = f"Pesan berhasil dikirim melalui webhook (status 204)."
+    elif res.status_code == 429:
+        # Jangan mencetak untuk status 429
+        message = "Terlalu banyak permintaan. Cobalah lagi nanti."
     else:
         message = f"Gagal mengirim pesan. Kode status: {res.status_code}"
     
@@ -101,7 +102,6 @@ def send_messages():
 def main():
     socket_thread = threading.Thread(target=socket_communication)
     socket_thread.start()
-        # Start sending messages
     while True:
         send_messages()
 
